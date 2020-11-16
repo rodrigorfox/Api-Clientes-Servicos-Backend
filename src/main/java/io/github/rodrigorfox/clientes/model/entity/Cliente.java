@@ -2,6 +2,7 @@ package io.github.rodrigorfox.clientes.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -23,7 +24,7 @@ public class Cliente {
     @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, unique = true, length = 11)
     @NotNull(message = "{campo.cpf.obrigatorio}")
     @CPF(message = "{campo.cpf.invalido}")
     private String cpf;
